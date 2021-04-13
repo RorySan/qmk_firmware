@@ -23,6 +23,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 enum {
     TD_ESC_CAPS,
     TD_LCTL_CAPS,
+    TD_DOT_MINS,
 };
 
 // Tap Dance definitions
@@ -30,6 +31,7 @@ qk_tap_dance_action_t tap_dance_actions[] = {
     // Tap once for Escape, twice for Caps Lock
     [TD_ESC_CAPS] = ACTION_TAP_DANCE_DOUBLE(KC_ESC, KC_CAPS),
     [TD_LCTL_CAPS] = ACTION_TAP_DANCE_DOUBLE(KC_LCTL, KC_CAPS),
+    [TD_DOT_MINS] = ACTION_TAP_DANCE_DOUBLE(KC_DOT, ES_MINS),
 };
 
 
@@ -43,48 +45,60 @@ LSFT_T(KC_ESC),  KC_A,    KC_S,   KC_D,    KC_F,    KC_G,                       
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
   TD(TD_LCTL_CAPS),KC_Z,  KC_X,  KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SCLN, KC_ENT,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          KC_LALT,   MO(2),  KC_SPC,     RCTL_T(KC_ENT),   MO(1), KC_RGUI
+                                          KC_LALT,   MO(3),  KC_SPC,     RCTL_T(KC_ENT),   MO(2), KC_RGUI
                                       //`--------------------------'  `--------------------------'
 
   ),
 
   [1] = LAYOUT_split_3x6_3(
-  //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      _______, ES_EXLM , ES_DQUO, ES_QUOT, ES_ASTR, XXXXXXX,                      XXXXXXX, KC_PGUP, KC_UP,    KC_DEL, XXXXXXX, KC_BSPC,
-  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
- LSFT_T(KC_ESC),XXXXXXX,ES_MINS, ES_PLUS, ES_QUES, ES_EQL,                  KC_HOME, KC_LEFT, KC_DOWN,KC_RIGHT, KC_END, RSFT_T(KC_TAB),
-  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LCTL,  XXXXXXX, ES_UNDS, ES_RABK, XXXXXXX, XXXXXXX,                      XXXXXXX, KC_PGDN, TG(4),  XXXXXXX,  MO(4),  XXXXXXX ,
-  //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          KC_LALT, MO(5),  KC_SPC,     RCTL_T(KC_ENT), _______, KC_RGUI
-                                      //`--------------------------'  `--------------------------'
-  ),
+      //,-----------------------------------------------------.                    ,-----------------------------------------------------.
+            KC_TAB,   KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                        KC_Y,    KC_U,    KC_I,    KC_O,   KC_P,  KC_BSPC,
+       //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
+          KC_LSFT,  KC_A,    KC_S,   KC_D,    KC_F,    KC_G,                          KC_H,    KC_J,    KC_K,   KC_L, KC_LSFT, KC_QUOT,
+       //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
+          KC_LCTL   ,KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SCLN, KC_ENT,
+       //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
+                                               KC_LALT, MO(3) ,KC_SPC  ,     KC_ENT,  MO(2), KC_ESC
+                                           //`--------------------------'  `--------------------------'
+       ),
 
   [2] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-       ES_MORD, KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                        ES_PLUS, ES_LABK, ES_RABK, XXXXXXX, ES_GRV,  KC_BSPC,
+      KC_ESC, ES_EXLM , ES_DQUO, ES_QUOT, ES_ASTR, XXXXXXX,                      XXXXXXX, KC_PGUP, KC_UP,    KC_DEL, XXXXXXX, KC_BSPC,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-  LSFT_T(KC_ESC), KC_6, KC_7,    KC_8,    KC_9,    KC_0,                      ES_MINS , ES_LCBR, ES_RCBR, XXXXXXX,RSFT_T(KC_TAB),XXXXXXX,
+ LSFT_T(KC_ESC),XXXXXXX,ES_MINS, ES_PLUS, ES_QUES, ES_EQL,                  KC_HOME, KC_LEFT, KC_DOWN,KC_RIGHT, KC_END, RSFT_T(KC_TAB),
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LCTL, MO(4), KC_DOT,   KC_BSPC,  KC_DEL,  TG(4),                      XXXXXXX, ES_LBRC , ES_RBRC, ES_IEXL, ES_CCED, KC_ENT,
+      KC_LCTL,  XXXXXXX, ES_UNDS, ES_RABK, XXXXXXX, XXXXXXX,                      XXXXXXX, KC_PGDN, TG(5),  XXXXXXX,  MO(5),  XXXXXXX ,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          KC_LALT, _______,  KC_SPC,     KC_SPC, KC_RALT, KC_LGUI
+                                          KC_LALT, MO(6),  KC_SPC,     RCTL_T(KC_ENT), _______, KC_RGUI
                                       //`--------------------------'  `--------------------------'
   ),
 
   [3] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
+       ES_MORD, KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                        ES_PLUS, ES_LABK, ES_RABK, XXXXXXX, ES_GRV,  KC_BSPC,
+  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
+  LSFT_T(KC_ESC), KC_6, KC_7,    KC_8,    KC_9,    KC_0,                      ES_MINS , ES_LCBR, ES_RCBR, XXXXXXX,RSFT_T(KC_TAB),KC_ESC,
+  //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
+    KC_LCTL, MO(5),  KC_BSPC,TD(TD_DOT_MINS), KC_DEL,TG(4),                      XXXXXXX, ES_LBRC , ES_RBRC, ES_IEXL, ES_CCED, KC_ENT,
+  //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
+                                          KC_LALT, _______,  KC_SPC,     KC_SPC, KC_RALT, KC_LGUI
+                                      //`--------------------------'  `--------------------------'
+  ),
+
+  [4] = LAYOUT_split_3x6_3(
+  //,-----------------------------------------------------.                    ,-----------------------------------------------------.
         RESET, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, TG(3),
+      RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, TG(4),
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           _______, _______,  KC_SPC,     KC_ENT, _______, KC_RALT
                                       //`--------------------------'  `--------------------------'
   ),
 
-    [4] = LAYOUT_split_3x6_3(
+    [5] = LAYOUT_split_3x6_3(
     //,-----------------------------------------------------.                    ,-----------------------------------------------------.
         XXXXXXX,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                      ES_PLUS, KC_KP_7, KC_KP_8, KC_KP_9, KC_PMNS, KC_BSPC,
     //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
@@ -96,17 +110,17 @@ LSFT_T(KC_ESC),  KC_A,    KC_S,   KC_D,    KC_F,    KC_G,                       
                                         //`--------------------------'  `--------------------------'
     ),
 
-    [5] = LAYOUT_split_3x6_3(
+    [6] = LAYOUT_split_3x6_3(
     //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, TG(1), DF(0),
     //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, TG(1),                     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, DF(1),
     //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, TG(3),
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, TG(4),
     //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                            KC_LALT, TG(5),  KC_SPC,     RCTL_T(KC_ENT), XXXXXXX, KC_LALT
+                                            KC_LALT, TG(6),  KC_SPC,     RCTL_T(KC_ENT), XXXXXXX, KC_LALT
                                         //`--------------------------'  `--------------------------'
-    )
+    ),
 };
 
 #ifdef OLED_DRIVER_ENABLE
@@ -118,10 +132,11 @@ oled_rotation_t oled_init_user(oled_rotation_t rotation) {
 }
 
 #define L_BASE 0
-#define L_LOWER 2
-#define L_RAISE 4
-#define L_ADJUST 8
-#define L_FNUM 16
+#define L_LOWER 4
+#define L_RAISE 8
+#define L_ADJUST 16
+#define L_FNUM 32
+#define L_GAMING 2
 
 void oled_render_layer_state(void) {
     oled_write_P(PSTR("Layer: "), false);
@@ -138,10 +153,13 @@ void oled_render_layer_state(void) {
         case L_FNUM:
             oled_write_ln_P(PSTR("F-Num"), false);
             break;
+        case L_GAMING:
+            oled_write_ln_P(PSTR("Gaming"), false);
+            break;
         case L_ADJUST:
-        case L_ADJUST|L_LOWER:
-        case L_ADJUST|L_RAISE:
-        case L_ADJUST|L_LOWER|L_RAISE:
+//         case L_ADJUST|L_LOWER:
+//         case L_ADJUST|L_RAISE:
+//         case L_ADJUST|L_LOWER|L_RAISE:
             oled_write_ln_P(PSTR("Adjust"), false);
             break;
     }
